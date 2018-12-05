@@ -60,12 +60,23 @@ void _mystr_debug_print(mystr *S) {
 
 int mystr_len(mystr *S) {
 	// Implementera!!
+    if(!S) return 0;
+    return mystr_len(S->tail) + 1;
 }
 
 mystr *mystr_dup(mystr *S) {
 	// Implementera!!
+    if(!S) return 0;
+    return mystr_new_char(mystr_get_char(S), mystr_dup(mystr_get_tail(S)));
+}
+
+static mystr *_mystr_inverse(mystr *S, mystr *R) {
+    // Implementera!!
+    if(!S) return R;
+    return _mystr_inverse(mystr_get_tail(S), mystr_new_char(mystr_get_char(S), R));
 }
 
 mystr *mystr_inverse(mystr *S) {
 	// Implementera!!
+    return _mystr_inverse(S, 0);
 }
