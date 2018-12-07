@@ -58,28 +58,35 @@ void _mystr_debug_print(mystr *S) {
     }
 }
 
+/* mystr_len: Returns the number of elements in mystr
+*/
 int mystr_len(mystr *S) {
 	// Implementera!!
     if(!S) return 0;
     return mystr_len(S->tail) + 1;
 }
 
+/*  mystr_dup: Duplicate a mystr
+*/
 mystr *mystr_dup(mystr *S) {
 	// Implementera!!
-    if(!S) return 0;
-    return mystr_new_char(mystr_get_char(S), mystr_dup(mystr_get_tail(S)));
+    if(!S) return 0; // End of list
+    return mystr_new_char(mystr_get_char(S), mystr_dup(mystr_get_tail(S))); // Create a new mystr, copy char value, then set its tail to a duplicate of next
 }
 
 /*  _mystr_inverse: Helper function for reversing a mystr via recursion
-    Static because it is "private" to this translation unit (the linker won't complain if theres another function with this name somewhere else)
+    Static keyword because it is "private" to this translation unit (the linker won't complain if theres another function with the same name somewhere else)
 */
 static mystr *_mystr_inverse(mystr *S, mystr *R) {
     // Implementera!!
     if(!S) return R;
-    return _mystr_inverse(mystr_get_tail(S), mystr_new_char(mystr_get_char(S), R));
+    return _mystr_inverse(mystr_get_tail(S), mystr_new_char(mystr_get_char(S), R)); // Create a new mystr from every node in S, when we reach the end, R will be a pointer to a duplicate mystr list starting from the other end
 }
 
+/*  mystr_inverse: Reversing a copy of mystr
+    Based on school class code, there's not much to do more here, but there's an iterative version in branch 'mystring2' on Git
+*/
 mystr *mystr_inverse(mystr *S) {
 	// Implementera!!
-    return _mystr_inverse(S, 0);
+    return _mystr_inverse(S, 0); // Start reversing mystr, setting the end tail auto. in the first 'iteration' in next function
 }
