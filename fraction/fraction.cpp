@@ -1,6 +1,5 @@
 #include <iostream>
 #include "fraction.hpp"
-#include <cstdio>
 
 using namespace std;
 
