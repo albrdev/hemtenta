@@ -58,16 +58,12 @@ void _mystr_debug_print(mystr *S) {
     }
 }
 
-/* mystr_len: Returns the number of elements in mystr
-*/
 int mystr_len(mystr *S) {
 	// Implementera!!
     if(!S) return 0;
     return mystr_len(S->tail) + 1;
 }
 
-/*  mystr_dup: Duplicate a mystr
-*/
 mystr *mystr_dup(mystr *S) {
 	// Implementera!!
     if(!S) return 0; // End of list
@@ -83,8 +79,7 @@ static mystr *_mystr_inverse(mystr *S, mystr *R) {
     return _mystr_inverse(mystr_get_tail(S), mystr_new_char(mystr_get_char(S), R)); // Create a new mystr from every node in S, when we reach the end, R will be a pointer to a duplicate mystr list starting from the other end
 }
 
-/*  mystr_inverse: Reversing a copy of mystr
-    Based on school class code, there's not much to do more here, but there's an iterative version in branch 'mystring2' on Git
+/*  Based on school class code, there's not much to do more here, but there's an iterative version in branch 'mystring2' on Git
 */
 mystr *mystr_inverse(mystr *S) {
 	// Implementera!!
