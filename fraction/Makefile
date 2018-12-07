@@ -1,7 +1,7 @@
 testfract: fraction.o testfract.cpp
-	g++ -o $@ $^
+	g++ -o $@ $?
 
-fraction.o: fraction.cpp
+fraction.o: fraction.cpp fraction.hpp
 	g++ -c $< -o $@
 
 .PHONY: clean test
