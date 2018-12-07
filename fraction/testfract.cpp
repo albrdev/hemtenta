@@ -10,7 +10,7 @@ void testOps(fraction F, fraction G) {
 
     // Test -
     F.print(); cout << " - "; G.print();
-    cout << " = "; (F - G).print(); cout << endl;
+    cout << " = "; (F-G).print(); cout << endl;
 
     // Test *
     F.print(); cout << " * "; G.print();
