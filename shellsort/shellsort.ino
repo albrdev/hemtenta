@@ -85,7 +85,12 @@ void loop() {
     Serial.print(tick);
     Serial.print(" värde = ");
     Serial.println(sensorVal);
-    //Serial.flush(); // I noticed that when i commented out the previous printing lines I got increased performance, so I put this here to make sure the buffer is flushed before going into the sorting, it sped up the time reported by about 5-6 times (~35ms down to ~6ms). I tried to put it inside the following 'if' statement, just before the sort, but that doubled the time instead for some unknown reason (maybe the flush is processed in another thread that jams sorting?).
+    
+    /* I noticed that when i commented out the previous printing lines I got increased performance, so I put this here to make sure the buffer is flushed before going into the sorting, it sped up the time reported by about 5-6 times (~35ms down to ~6ms).
+     *  I tried to put it inside the following 'if' statement, just before the sort, but that doubled the time instead for some unknown reason (maybe the flush is processed in another thread that jams sorting? This wasn't an issue if flushing when sensorIx == SENSOR_SIZE - 1).
+    */
+    //Serial.flush();
+    
     sensorTab[sensorIx].tim = tick;
     sensorTab[sensorIx].value = sensorVal;
     sensorIx++;
