@@ -70,6 +70,9 @@ mystr *mystr_dup(mystr *S) {
     return mystr_new_char(mystr_get_char(S), mystr_dup(mystr_get_tail(S)));
 }
 
+/*  _mystr_inverse: Helper function for reversing a mystr via recursion
+    Static because it is "private" to this translation unit (the linker won't complain if theres another function with this name somewhere else)
+*/
 static mystr *_mystr_inverse(mystr *S, mystr *R) {
     // Implementera!!
     if(!S) return R;
